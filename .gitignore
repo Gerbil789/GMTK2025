@@ -1,0 +1,72 @@
+# Directories
+.vs/
+.vscode/
+
+# ========== Unity Specific ==========
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+
+# Uncomment if using Unity 2020.1 or newer
+# MemoryCaptures/
+
+# ========== Asset Store Tools ==========
+*.unitypackage
+
+# ========== User-specific ==========
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+
+# ========== Visual Studio / JetBrains Rider ==========
+.vscode/
+.idea/
+*.sln
+*.user
+*.userosscache
+*.suo
+*.tmp
+*.userprefs
+
+# ========== OS Generated ==========
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ========== Crash Reports ==========
+sysinfo.txt
+
+# ========== Auto-generated ==========
+*.apk
+*.aab
+*.xcworkspace
+*.xcuserdata/
+*.buildlog
+*.vs/
+*.gradle/
+*.class
+*.log
+
+# ========== Other ==========
+/obj/
+/*.pidb
+*.apk
+*.aab
+*.symbols.zip
