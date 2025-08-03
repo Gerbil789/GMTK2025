@@ -1,20 +1,27 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
+using UnityEngine.Splines;
 
 public class GameManager : MonoBehaviour
 {
   public static GameManager Instance { get; private set; }
 
-  public int points = 10;
+  public int points = 1000;
   public event Action OnPointsChanged;
 
-  public GameObject carPanelPrefab;
+  public GameObject EntityPanelPrefab;
+  public GameObject EntityPrefab;
   public Transform contentTransform;
+  public Transform spawnRoot;
+  public SplineContainer spline;
+  public GameObject ThankYouPanelPrefab;
+  public StatsPanel statsPanel;
 
-  private Car[] cars;
+  public List<EntityConfig> configs;
 
+  List<EntityPanel> panels = new();
+  int currentPanelIndex = 0;
 
   private void Awake()
   {
@@ -30,13 +37,22 @@ public class GameManager : MonoBehaviour
 
   void Start()
   {
-    cars = FindObjectsByType<Car>(FindObjectsSortMode.None);
+    statsPanel.gameObject.SetActive(false);
 
-    foreach (var car in cars)
+    int i = 0;
+    foreach (var config in configs)
     {
-      var carPanelGO = Instantiate(carPanelPrefab, contentTransform);
-      CarPanel panel = carPanelGO.GetComponent<CarPanel>();
-      panel.Init(car);
+      var PanelGO = Instantiate(EntityPanelPrefab, contentTransform);
+      var panel = PanelGO.GetComponent<EntityPanel>();
+      panel.Init(config, statsPanel);
+
+      panels.Add(panel);
+
+      if (currentPanelIndex < i)
+      {
+        panel.gameObject.SetActive(false);
+      }
+      i++;
     }
   }
 
@@ -45,5 +61,27 @@ public class GameManager : MonoBehaviour
   {
     points += amount;
     OnPointsChanged?.Invoke();
+  }
+
+  public Entity SpawnEntity() 
+  {
+    var GO = Instantiate(EntityPrefab, spawnRoot);
+    var entity = GO.GetComponent<Entity>();
+    entity.SetSpline(spline);
+
+    currentPanelIndex++;
+
+    if (currentPanelIndex < panels.Count)
+    {
+      panels[currentPanelIndex].gameObject.SetActive(true);
+    }
+    else 
+    {
+      //spawn thank you panel
+      Instantiate(ThankYouPanelPrefab, contentTransform);
+    }
+
+
+    return entity;
   }
 }

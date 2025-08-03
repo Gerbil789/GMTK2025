@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c9b1d8f9f2f894c820587948f2eea3, type: 3}
+  m_Name: Lol
+  m_EditorClassIdentifier: 
+  baseSpeed: 50
+  speedMultiplier: 2
+  baseIncome: 3
+  incomeMultiplier: 4
+  buyCost: 200
+  baseLevelUpCost: 100
+  levelUpCostMultiplier: 10
+  sprite: {fileID: 6466912814626516007, guid: c0147983647bfdc4495eeb4bc269c717, type: 3}
